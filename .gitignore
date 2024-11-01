@@ -1,0 +1,6 @@
+__pycache__/
+*~
+/config.yaml
+/voices/*.wav
+/venv/
+/.venv/
