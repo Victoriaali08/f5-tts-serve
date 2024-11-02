@@ -2,5 +2,6 @@ __pycache__/
 *~
 /config.yaml
 /voices/*.wav
+/voices/hub/
 /venv/
 /.venv/

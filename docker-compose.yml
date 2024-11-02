@@ -1,0 +1,16 @@
+name: f5-tts-serve
+services:
+  server:
+    build: .
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./voices:/app/voices
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: all

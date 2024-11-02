@@ -28,7 +28,7 @@ Yes, I'm aware of [openedai-speech](https://github.com/matatonic/openedai-speech
 
 ### ToDo
 
-* [ ] Dockerfile
+* [x] Dockerfile
 * [ ] More robustness, especially in code that executes in background threads
 * [ ] API key support?
 * [ ] AAC support? Are there any frontends that demand AAC?
@@ -53,6 +53,12 @@ If you'd like to use something other than CUDA 12.4, use the unpinned requiremen
 
     pip install -r requirements.in --extra-index-url https://download.pytorch.org/whl/cu118
 
+### Docker
+
+Sorry, I don't have a pre-built image. But you can easily build one with:
+
+    docker compose build
+
 ## Running
 
 With your venv/virtualenv/conda environment active:
@@ -60,6 +66,12 @@ With your venv/virtualenv/conda environment active:
     python server.py
 
 By default, it will listen to `127.0.0.1` port 8000. You can change this by adding the `--host` and `--port` arguments to the above.
+
+### Docker
+
+See the included `docker-compose.yml` file. But typically, you can run it with:
+
+    docker compose up
 
 ### Example Client Usage (using curl)
 
