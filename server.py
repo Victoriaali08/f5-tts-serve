@@ -91,7 +91,10 @@ async def setup_teardown(_app):
     )
     logging.info(f"""Supported formats: {', '.join(SUPPORTED_FORMATS.keys())}""")
 
-    TTS = F5TTS()
+    tts_model = os.environ.get("TTS_MODEL", "F5-TTS")
+    logging.info(f"Using model: {tts_model}")
+
+    TTS = F5TTS(model_type=tts_model)
     try:
         yield
     finally:
@@ -214,8 +217,17 @@ def main():
         default=port,
         help=f"Port to listen on (default: {port})",
     )
+    parser.add_argument(
+        "--e2-tts",
+        action='store_true',
+        default=False,
+        help="Use E2-TTS model instead",
+    )
 
     args = parser.parse_args()
+
+    if args.e2_tts:
+        os.environ["TTS_MODEL"] = "E2-TTS"
 
     uvicorn.run(
         app,
