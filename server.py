@@ -198,7 +198,8 @@ async def create_speech(request: CreateSpeechRequest) -> StreamingResponse:
 
 
 def main():
-    host = "127.0.0.1"
+    # Modificado para escuchar en todas las interfaces (0.0.0.0)
+    host = "0.0.0.0"
     port = 8000
 
     parser = argparse.ArgumentParser("Basic OpenAI-compatible server for F5-TTS")
